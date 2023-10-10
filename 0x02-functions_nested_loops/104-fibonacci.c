@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-void print_fibonacci(int b1, int b2);
-
 /**
  * main - Entry point, computes and prints the first 98
  *        Fibonacci numbers, starting with 1 and 2.
@@ -10,38 +8,53 @@ void print_fibonacci(int b1, int b2);
  */
 int main(void)
 {
-    int a1 = 1, a2 = 0, b1 = 2, b2 = 0;  /* Initial Fibonacci numbers */
-    int i;
+    unsigned long int a1 = 1, a2 = 0, b1 = 2, b2 = 0;
+    unsigned long int carry = 0;
+    int count;
 
-    printf("1, 2");
-    for (i = 3; i <= 98; i++)
+    printf("%lu, %lu", a1, b1);
+    for (count = 3; count <= 98; count++)
     {
-        /* Compute next Fibonacci number */
-        a2 += b2;
-        b2 = a2 / 1000000000;  /* Carry */
-        a2 %= 1000000000;
+        /* Calculate sum */
+        a1 = a1 + b1 + carry;
+        if (a1 > 999999999)
+        {
+            carry = 1;
+            a1 = a1 % 1000000000;
+        }
+        else
+        {
+            carry = 0;
+        }
 
-        a1 += b1 + b2;
-        b1 = a1 / 1000000000;  /* Carry */
-        a1 %= 1000000000;
+        a2 = a2 + b2 + carry;
+        if (a2 > 999999999)
+        {
+            carry = 1;
+            a2 = a2 % 1000000000;
+        }
+        else
+        {
+            carry = 0;
+        }
 
-        print_fibonacci(b1, b2);
+        /* Print sum */
+        if (a2 == 0)
+        {
+            printf(", %lu", a1);
+        }
+        else
+        {
+            printf(", %lu%lu", a2, a1);
+        }
 
-        b2 = a2;  /* Update b2 for next iteration */
+        /* Swap */
+        b1 = a1;
+        b2 = a2;
+        a1 = 0;
+        a2 = 0;
     }
     printf("\n");
-    return (0);
-}
 
-/**
- * print_fibonacci - Prints a Fibonacci number given by two integer chunks.
- * @b1: The first chunk of the number.
- * @b2: The second chunk of the number.
- */
-void print_fibonacci(int b1, int b2)
-{
-    if (b1 == 0)
-        printf(", %d", b2);
-    else
-        printf(", %d%d", b1, b2);
+    return (0);
 }

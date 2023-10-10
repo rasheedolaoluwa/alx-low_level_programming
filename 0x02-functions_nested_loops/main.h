@@ -1,3 +1,4 @@
+void times_table(void);
 void jack_bauer(void);
 int _putchar(char c);
 void print_alphabet(void);

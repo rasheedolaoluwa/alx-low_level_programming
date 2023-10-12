@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 /**
  * main - Entry point
@@ -11,6 +10,12 @@ int main(void)
     unsigned long int num = 612852475143;
     unsigned long int max_prime = -1;
     unsigned long int i;
+    unsigned long int limit;
+
+    // Find the square root of num manually
+    for (limit = 0; limit * limit < num; ++limit)
+        ;
+    --limit;
 
     // Dividing the number by 2 until it becomes odd
     while (num % 2 == 0)
@@ -20,7 +25,7 @@ int main(void)
     }
 
     // num must be odd at this point, so we can skip an element (Note i = i +2)
-    for (i = 3; i <= sqrt(num); i += 2)
+    for (i = 3; i <= limit; i += 2)
     {
         // While i divides num, keep dividing and update max_prime
         while (num % i == 0)

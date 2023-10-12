@@ -4,7 +4,6 @@
 /**
  * print_remaining_days - Prints the remaining days of a year
  *                        from a given date.
- *
  * @month: The month as an integer (from 1 to 12).
  * @day: The day of the month as an integer.
  * @year: The year as an integer.
@@ -15,7 +14,7 @@ void print_remaining_days(int month, int day, int year)
 {
 	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 	{
-		if (month > 2)
+		if (month > 2 || (month == 2 && day >= 60))
 			day++;
 
 		printf("Day of the year: %d\n", day);

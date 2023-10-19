@@ -20,9 +20,10 @@ char *cap_string(char *s)
 	for (i = 1; s[i] != '\0'; i++)
 	{
 		/* Check for delimiters which signify the end of a word */
-		if (s[i - 1] == ' ' || s[i - 1] == '\t' || s[i - 1] == '\n' || s[i - 1] == ',' ||
-			s[i - 1] == ';' || s[i - 1] == '.' || s[i - 1] == '!' || s[i - 1] == '?' ||
-			s[i - 1] == '"' || s[i - 1] == '(' || s[i - 1] == ')' || s[i - 1] == '{' ||
+		if (s[i - 1] == ' ' || s[i - 1] == '\t' || s[i - 1] == '\n' ||
+			s[i - 1] == ',' || s[i - 1] == ';' || s[i - 1] == '.' ||
+			s[i - 1] == '!' || s[i - 1] == '?' || s[i - 1] == '"' ||
+			s[i - 1] == '(' || s[i - 1] == ')' || s[i - 1] == '{' ||
 			s[i - 1] == '}')
 		{
 			/* If the character is a lowercase letter, capitalize it */

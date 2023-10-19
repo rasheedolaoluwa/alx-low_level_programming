@@ -7,7 +7,7 @@
  *
  * Return: 
  *   If s1 < s2, a negative value.
- *   If s1 == s2, 0.
+ *   If s1 == s2,  0.
  *   If s1 > s2, a positive value.
  */
 int _strcmp(char *s1, char *s2)

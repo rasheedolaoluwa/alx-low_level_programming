@@ -12,6 +12,7 @@ int helper(int n, int guess);
 int is_prime_number(int n);
 int check_prime(int n, int i);
 int is_palindrome(char *s);
-int palindrome_helper(char *s, int start, int end);
+int check_palindrome(char *s, int start, int end);
+int find_length(char *s, int len);
 
 #endif /* MAIN_H */

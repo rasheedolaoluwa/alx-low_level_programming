@@ -2,22 +2,25 @@
 
 /**
  * array_range - creates an array of integers
- * @min: the first integer in the array
- * @max: the last integer in the array
+ * @min: first integer
+ * @max: last integer
  * Return: pointer to the newly created array
  */
 int *array_range(int min, int max)
 {
+	int *arr;
+	unsigned int i, range;
+
 	if (min > max)
 		return (NULL);
-	int *arr;
-	unsigned int i, len = max - min + 1;
 
-	arr = malloc(len * sizeof(int));
+	range = max - min + 1;
+	arr = malloc(sizeof(int) * range);
+
 	if (arr == NULL)
 		return (NULL);
 
-	for (i = 0; i < len; i++, min++)
+	for (i = 0; i < range; i++, min++)
 		arr[i] = min;
 
 	return (arr);

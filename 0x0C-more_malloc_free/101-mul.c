@@ -1,34 +1,36 @@
 #include "main.h"
 
 /**
- * is_digit - checks if a string is a digit
- * @str: string to check
- * Return: 0 if digit, 1 if not
+ * is_digit - checks if a string consists of digits only
+ * @s: string to check
+ *
+ * Return: 1 if s consists of digits only, 0 otherwise
  */
-int is_digit(char *str)
+int is_digit(char *s)
 {
-	while (*str)
+	while (*s)
 	{
-		if (*str < '0' || *str > '9')
-			return (1);
-		str++;
+		if (*s < '0' || *s > '9')
+			return (0);
+		s++;
 	}
-	return (0);
+	return (1);
 }
 
 /**
- * main - multiplies two numbers
+ * main - multiplies two positive numbers and prints the result
  * @argc: argument count
  * @argv: argument vector
- * Return: 0 if successful, 98 if error
+ *
+ * Return: 0 on success, 98 on error
  */
 int main(int argc, char *argv[])
 {
-	if (argc != 3 || is_digit(argv[1]) || is_digit(argv[2]))
+	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+	printf("%lu\n", atol(argv[1]) * atol(argv[2]));
 	return (0);
 }

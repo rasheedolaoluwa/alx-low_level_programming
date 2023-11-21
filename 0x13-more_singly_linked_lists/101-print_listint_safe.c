@@ -25,7 +25,7 @@ size_t print_listint_safe(const listint_t *head)
 		{
 			if (checker == current->next)
 			{
-				printf("-> [%p] %d\n", (void *)current->next, current->next->n);
+				printf("-> [%p] %d\n", (void *)checker, checker->n);
 				return (count);
 			}
 			checker = checker->next;

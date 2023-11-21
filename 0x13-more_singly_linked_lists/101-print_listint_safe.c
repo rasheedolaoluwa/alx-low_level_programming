@@ -1,6 +1,5 @@
 #include "lists.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * print_listint_safe - prints a listint_t linked list, even if it has a loop
@@ -10,28 +9,35 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *current, *checker;
+	const listint_t *slow = head;
+	const listint_t *fast = head;
 	size_t count = 0;
+	int loop_detected = 0;
 
-	current = head;
-	while (current != NULL)
+	while (slow && fast && fast->next)
 	{
-		printf("[%p] %d\n", (void *)current, current->n);
-		count++;
-
-		/* Check for loop */
-		checker = head;
-		while (checker != current)
+		if (slow == fast && count > 0)
 		{
-			if (checker == current->next)
-			{
-				printf("-> [%p] %d\n", (void *)checker, checker->n);
-				return (count);
-			}
-			checker = checker->next;
+			loop_detected = 1;
+			break;
 		}
+		slow = slow->next;
+		fast = fast->next->next;
+		count++;
+	}
 
-		current = current->next;
+	if (loop_detected)
+	{
+		printf("-> [%p] %d\n", (void *)slow, slow->n);
+		return (count);
+	}
+
+	count = 0;
+	while (head)
+	{
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
+		count++;
 	}
 
 	return (count);

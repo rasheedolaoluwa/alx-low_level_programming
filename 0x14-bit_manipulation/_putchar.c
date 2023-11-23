@@ -1,0 +1,18 @@
+#include <unistd.h>
+
+/**
+ * _putchar - Writes the character 'c' to standard output (stdout).
+ * @c: The character to be printed.
+ *
+ * Description: This function takes a single character and writes it to
+ * standard output. It is a wrapper around the 'write' system call which
+ * is used to handle low-level I/O operations in Unix-like systems.
+ *
+ * Return: On successful writing, the function returns 1.
+ * If an error occurs, the function returns -1, and the global variable
+ * 'errno' is set to indicate the error.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}

@@ -1,51 +1,36 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * binary_to_uint - converts a binary number to an unsigned int
- * @b: pointer to a string of 0 and 1 chars
+ * binary_to_uint - Converts a binary number, represented as a string, to an
+ *                  unsigned integer.
+ * @b: Pointer to a string containing a binary number.
  *
- * Return: the converted number, or 0 if:
- * - there is one or more chars in the string b that is not 0 or 1
- * - b is NULL
+ * Description: This function iterates through each character of the string,
+ * ensuring they are valid binary digits ('0' or '1'). It then converts the
+ * binary number to its decimal equivalent. If the string is NULL or contains
+ * characters other than '0' or '1', the function returns 0.
+ *
+ * Return: The decimal value of the binary number, or 0 in case of an error or
+ * invalid input.
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0;
+	int a;
+	unsigned int num;
 
-	if (b == NULL)
+	num = 0;
+	if (!b)
 		return (0);
-
-	for (int i = 0; b[i] != '\0'; i++)
+	for (a = 0; b[a] != '\0'; a++)
 	{
-		if (b[i] != '0' && b[i] != '1')
+		if (b[a] != '0' && b[a] != '1')
 			return (0);
-
-		num <<= 1;
-		num += b[i] - '0';
 	}
-
+	for (a = 0; b[a] != '\0'; a++)
+	{
+		num <<= 1;
+		if (b[a] == '1')
+			num += 1;
+	}
 	return (num);
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-	unsigned int n;
-
-	n = binary_to_uint("1");
-	printf("%u\n", n);
-	n = binary_to_uint("101");
-	printf("%u\n", n);
-	n = binary_to_uint("1e01");
-	printf("%u\n", n);
-	n = binary_to_uint("1100010");
-	printf("%u\n", n);
-	n = binary_to_uint("0000000000000000000110010010");
-	printf("%u\n", n);
-	return (0);
 }

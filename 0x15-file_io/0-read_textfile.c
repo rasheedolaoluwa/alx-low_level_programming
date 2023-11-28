@@ -1,9 +1,4 @@
 #include "main.h"
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
 
 /**
  * read_text_file - reads a text file and prints to POSIX stdout

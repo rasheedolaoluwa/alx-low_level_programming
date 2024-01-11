@@ -1,0 +1,32 @@
+#include "lists.h"
+
+/**
+ * get_dnodeint_at_index - Retrieves the nth node of a doubly linked list.
+ * @head: A pointer to the head of the list.
+ * @index: The index of the node to be retrieved, starting from 0.
+ * Return: The nth node if it exists, or NULL if it doesn't.
+ *
+ * This function traverses the doubly linked list from the head, counting nodes
+ * until it reaches the specified index. 
+ * If the node at the given index is found,
+ * it returns a pointer to that node; otherwise, it returns NULL.
+ */
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+{
+	unsigned int size;
+	dlistint_t *tmp;
+
+	size = 0;
+	if (head == NULL)
+		return (NULL);
+
+	tmp = head;
+	while (tmp)
+	{
+		if (index == size)
+			return (tmp);
+		size++;
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

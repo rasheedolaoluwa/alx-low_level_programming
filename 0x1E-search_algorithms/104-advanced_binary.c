@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * rec_search
+ * rec_search - use binary search algo to find val in int
  *
  * @array: input array
  * @size: size of the array
@@ -41,7 +41,7 @@ return (rec_search(array + half, size - half, value) + half);
 }
 
 /**
- * advanced_binary
+ * advanced_binary - call rec_search to return idx num
  *
  * @array: input array
  * @size: size of the array

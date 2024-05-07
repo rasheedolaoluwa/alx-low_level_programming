@@ -2,7 +2,7 @@
 #include <math.h>
 
 /**
- * jump_list
+ * jump_list - use jump algo to find value in int
  *
  * @list: input list
  * @size: size of the array
